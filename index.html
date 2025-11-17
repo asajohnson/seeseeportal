@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeeSeePortal - CMMS Game Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0033A0 0%, #0033A0 100%);
+            min-height: 100vh;
+            color: #FFFFFF;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .search-bar {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search-bar input {
+            width: 60%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .trimester-toggles {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .trimester-toggles button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .trimester-toggles button:hover,
+        .trimester-toggles button.active {
+            background: white;
+            color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px;
+        }
+
+        .game-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .game-description {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .game-author {
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .about-content {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 900px;
+            margin: 40px auto;
+            line-height: 1.8;
+        }
+
+        .about-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 10px;
+        }
+
+        .no-games {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .games-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .trimester-toggles button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/cmms-logo.png" alt="Cougar Mountain Middle School" class="logo">
+            <h1>SeeSeePortal</h1>
+        </div>
+        <p class="subtitle">Games created by Cougar Mountain Middle School Game Design students</p>
+        <nav>
+            <a href="#" class="nav-link active" data-page="home">Home</a>
+            <a href="#" class="nav-link" data-page="about">About</a>
+        </nav>
+    </header>
+
+    <div id="homePage" class="page active">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for games..." onkeyup="filterGames()">
+        </div>
+
+        <div class="trimester-toggles">
+            <button class="active" onclick="filterByTrimester('trimester1')">Trimester 1</button>
+            <button onclick="filterByTrimester('trimester2')">Trimester 2</button>
+            <button onclick="filterByTrimester('trimester3')">Trimester 3</button>
+        </div>
+
+        <div class="container">
+            <div class="games-container" id="gamesContainer">
+                <!-- Games will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutPage" class="page">
+        <div class="container">
+            <div class="about-content">
+                <h2>About SeeSeePortal</h2>
+                <p>Welcome to SeeSeePortal, a showcase of creativity and innovation from the talented students at Cougar Mountain Middle School's Game Design program!</p>
+                
+                <p>Our game design students learn the fundamentals of programming, creative thinking, and problem-solving by creating their own interactive games. Throughout the year, students work on increasingly complex projects that demonstrate their growing skills and unique creative visions.</p>
+                
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Program Structure</h3>
+                <p><strong>Trimester 1:</strong> Students learn the basics of game design, including fundamental programming concepts, simple game mechanics, and user interface design.</p>
+                
+                <p><strong>Trimester 2:</strong> Building on their foundation, students explore more advanced topics like game physics, animation, and multi-level game design.</p>
+                
+                <p><strong>Trimester 3:</strong> Our advanced students create their capstone projects, incorporating everything they've learned to build polished, complete games.</p>
+                
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Our Mission</h3>
+                <p>We believe that game design is more than just entertainment—it's a powerful way to teach computational thinking, creativity, and collaboration. Every game you see here represents hours of hard work, problem-solving, and imagination from our student developers.</p>
+                
+                <p>We hope you enjoy playing these games as much as our students enjoyed creating them!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Cougar Mountain Middle School | SeeSeePortal</p>
+    </footer>
+
+    <script>
+        // Sample game data - Replace with your actual games
+        const games = [
+            // Trimester 1 Games
+            {
+                title: "Space Adventure",
+                trimester: "trimester1",
+                thumbnail: "🚀",
+                description: "Navigate through space and avoid asteroids in this exciting game!",
+                author: "Alex Johnson",
+                folder: "games/space-adventure"
+            },
+            {
+                title: "Catch the Falling Stars",
+                trimester: "trimester1",
+                thumbnail: "⭐",
+                description: "Move your basket to catch as many falling stars as you can.",
+                author: "Sarah Chen",
+                folder: "games/catch-stars"
+            },
+            {
+                title: "Simple Maze",
+                trimester: "trimester1",
+                thumbnail: "🧩",
+                description: "Guide your character through the maze to reach the goal.",
+                author: "Marcus Williams",
+                folder: "games/simple-maze"
+            },
+            
+            // Trimester 2 Games
+            {
+                title: "Platform Jumper",
+                trimester: "trimester2",
+                thumbnail: "🏃",
+                description: "Jump between platforms and collect coins in this challenging platformer.",
+                author: "Emma Rodriguez",
+                folder: "games/platform-jumper"
+            },
+            {
+                title: "Color Match",
+                trimester: "trimester2",
+                thumbnail: "🎨",
+                description: "Match colors quickly in this fast-paced puzzle game.",
+                author: "David Kim",
+                folder: "games/color-match"
+            },
+            {
+                title: "Tower Defense",
+                trimester: "trimester2",
+                thumbnail: "🗼",
+                description: "Build towers to defend your base from waves of enemies.",
+                author: "Olivia Martinez",
+                folder: "games/tower-defense"
+            },
+            
+            // Trimester 3 Games
+            {
+                title: "Epic Quest",
+                trimester: "trimester3",
+                thumbnail: "⚔️",
+                description: "An RPG adventure with multiple levels, enemies, and boss battles.",
+                author: "James Anderson",
+                folder: "games/epic-quest"
+            },
+            {
+                title: "Racing Championship",
+                trimester: "trimester3",
+                thumbnail: "🏎️",
+                description: "Race against AI opponents on multiple tracks with power-ups.",
+                author: "Sophia Lee",
+                folder: "games/racing-championship"
+            },
+            {
+                title: "Puzzle Master",
+                trimester: "trimester3",
+                thumbnail: "🧠",
+                description: "A collection of brain-teasing puzzles with increasing difficulty.",
+                author: "Ethan Brown",
+                folder: "games/puzzle-master"
+            }
+        ];
+
+        let currentTrimester = 'trimester1';
+
+        function renderGames(gamesToRender) {
+            const container = document.getElementById('gamesContainer');
+            
+            if (gamesToRender.length === 0) {
+                container.innerHTML = '<div class="no-games">No games found. Check back soon!</div>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            gamesToRender.forEach(game => {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.onclick = () => window.location.href = `${game.folder}/index.html`;
+                
+                card.innerHTML = `
+                    <div class="game-thumbnail">${game.thumbnail}</div>
+                    <div class="game-info">
+                        <div class="game-title">${game.title}</div>
+                        <div class="game-description">${game.description}</div>
+                        <div class="game-author">By ${game.author}</div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        function filterByTrimester(trimester) {
+            currentTrimester = trimester;
+            
+            document.querySelectorAll('.trimester-toggles button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            const filtered = games.filter(game => game.trimester === trimester);
+            renderGames(filtered);
+        }
+
+        function filterGames() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            let filtered = games.filter(game => game.trimester === currentTrimester);
+            
+            if (searchTerm) {
+                filtered = filtered.filter(game => 
+                    game.title.toLowerCase().includes(searchTerm) ||
+                    game.author.toLowerCase().includes(searchTerm) ||
+                    game.description.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            renderGames(filtered);
+        }
+
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding page
+                const pageName = this.dataset.page;
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                document.getElementById(pageName + 'Page').classList.add('active');
+            });
+        });
+
+        // Initialize with Trimester 1 games
+        renderGames(games.filter(game => game.trimester === 'trimester1'));
+    </script>
+</body>
+</html>
