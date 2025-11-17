@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Space Adventure",
+        "h1": "Space Adventure",
+        "description": "Navigate through space and avoid asteroids in this exciting game! Use the arrow keys to control your spaceship and see how long you can survive.",
+        "createdby": "Alex Johnson",
+        "published": "November 15, 2024",
+        "folder": "games/2025-2026/t1/space-adventure"
+    },
+    {
+        "title": "Catch the Stars",
+        "h1": "Catch the Falling Stars",
+        "description": "Move your basket to catch as many falling stars as you can before time runs out!",
+        "createdby": "Sarah Chen",
+        "published": "November 18, 2024",
+        "folder": "games/2025-2026/t1/catch-stars"
+    },
+    {
+        "title": "Simple Maze",
+        "h1": "Simple Maze Challenge",
+        "description": "Guide your character through the maze to reach the goal. Can you find the fastest path?",
+        "createdby": "Marcus Williams",
+        "published": "November 20, 2024",
+        "folder": "games/2025-2026/t1/simple-maze"
+    }
+]
