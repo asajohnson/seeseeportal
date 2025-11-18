@@ -1,36 +1,9 @@
-﻿# PowerShell script to generate index.html files for each game from JSON
-
-# Path to your JSON file
-$jsonFilePath = "C:\Development\seeseeportal\tools\2-games-list.json"
-
-# Check if JSON file exists
-if (-not (Test-Path $jsonFilePath)) {
-    Write-Host "Error: JSON file not found at $jsonFilePath" -ForegroundColor Red
-    Write-Host "Press any key to exit..." -ForegroundColor Gray
-    Read-Host -Prompt "Press Enter to exit"
-    exit
-}
-
-# Read and parse JSON
-try {
-    $gamesData = Get-Content -Path $jsonFilePath -Raw | ConvertFrom-Json
-    Write-Host "Successfully loaded JSON with $($gamesData.Count) game(s)" -ForegroundColor Green
-}
-catch {
-    Write-Host "Error parsing JSON file: $_" -ForegroundColor Red
-    Write-Host "Press any key to exit..." -ForegroundColor Gray
-    Read-Host -Prompt "Press Enter to exit"
-    exit
-}
-
-# HTML Template
-$htmlTemplate = @'
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{TITLE}} - SeeSeePortal</title>
+    <title>Dodge the Skeletons - SeeSeePortal</title>
     <style>
         * {
             margin: 0;
@@ -175,73 +148,15 @@ $htmlTemplate = @'
         <div><p><em>Click into the game frame to start.</em></p><br></div>
 
         <div class="game-info">
-            <h1>{{H1}}</h1>
+            <h1>Dodge the Skeletons</h1>
             <p class="description">
-                {{DESCRIPTION}}
+                Move around the screen to dodge the skeletons.
             </p>
             <div class="meta">
-                <strong>Created by:</strong> {{CREATEDBY}}<br>
-                <strong>Published:</strong> {{PUBLISHED}}
+                <strong>Created by:</strong> Ethan Tea<br>
+                <strong>Published:</strong> November 8, 2025
             </div>
         </div>
     </div>
 </body>
 </html>
-'@
-
-# Process each game
-$successCount = 0
-$errorCount = 0
-
-Write-Host "`nProcessing games..." -ForegroundColor Cyan
-
-foreach ($game in $gamesData) {
-    try {
-        # Get game folder path from the JSON
-        $gameFolderPath = $game.folder
-        
-        if (-not $gameFolderPath) {
-            Write-Host "  WARNING: Skipped - Game missing 'folder' property" -ForegroundColor Yellow
-            $errorCount++
-            continue
-        }
-        
-        # Convert relative path to full path if needed
-        if (-not [System.IO.Path]::IsPathRooted($gameFolderPath)) {
-            $basePath = Split-Path $jsonFilePath -Parent
-            $gameFolderPath = Join-Path $basePath $gameFolderPath
-        }
-        
-        # Check if game folder exists
-        if (-not (Test-Path $gameFolderPath)) {
-            Write-Host "  WARNING: Skipped - Folder not found: $gameFolderPath" -ForegroundColor Yellow
-            $errorCount++
-            continue
-        }
-        
-        # Replace placeholders in template
-        $html = $htmlTemplate
-        $html = $html -replace '{{TITLE}}', $game.title
-        $html = $html -replace '{{H1}}', $game.h1
-        $html = $html -replace '{{DESCRIPTION}}', $game.description
-        $html = $html -replace '{{CREATEDBY}}', $game.createdby
-        $html = $html -replace '{{PUBLISHED}}', $game.published
-        
-        # Create index.html in game folder
-        $outputPath = Join-Path $gameFolderPath "index.html"
-        $html | Out-File -FilePath $outputPath -Encoding UTF8
-        
-        Write-Host "  SUCCESS: Created $outputPath" -ForegroundColor Green
-        $successCount++
-    }
-    catch {
-        Write-Host "  ERROR: Failed to process $($game.title) - $_" -ForegroundColor Red
-        $errorCount++
-    }
-}
-
-Write-Host "`nComplete! Successfully created: $successCount | Errors: $errorCount" -ForegroundColor Cyan
-
-# Pause to keep window open
-Write-Host "`nPress any key to exit..." -ForegroundColor Gray
-Read-Host -Prompt "Press Enter to exit"

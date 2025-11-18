@@ -2,7 +2,7 @@
 # This script searches recursively through all subdirectories
 
 # Set the starting directory (change this to your games folder path)
-$startDirectory = "C:\Development\seeseeportal\games"
+$startDirectory = "C:\Development\seeseeportal\games\2025-2026\t1\dodge-skeletons"
 
 # Get all index.html files recursively
 $indexFiles = Get-ChildItem -Path $startDirectory -Filter "index.html" -Recurse -File
@@ -34,16 +34,16 @@ if ($confirmation -eq 'Y' -or $confirmation -eq 'y') {
             
             # Check if game-index.html already exists
             if (Test-Path $newPath) {
-                Write-Host "  ⚠ Skipped: $($file.DirectoryName) (game-index.html already exists)" -ForegroundColor Yellow
+                Write-Host "  WARNING: Skipped $($file.DirectoryName) - game-index.html already exists" -ForegroundColor Yellow
                 $errorCount++
             } else {
                 Rename-Item -Path $file.FullName -NewName "game-index.html"
-                Write-Host "  ✓ Renamed: $($file.DirectoryName)" -ForegroundColor Green
+                Write-Host "  SUCCESS: Renamed in $($file.DirectoryName)" -ForegroundColor Green
                 $successCount++
             }
         }
         catch {
-            Write-Host "  ✗ Error renaming $($file.FullName): $_" -ForegroundColor Red
+            Write-Host "  ERROR: Failed to rename $($file.FullName): $_" -ForegroundColor Red
             $errorCount++
         }
     }
