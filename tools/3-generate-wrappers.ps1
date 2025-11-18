@@ -173,6 +173,7 @@ $htmlTemplate = @'
         </div>
 
         <div><p><em>Click into the game frame to start.</em></p><br></div>
+        <div><p><em>Refresh the screen to restart the game if it doesn't restart itself.</em></p></div>
 
         <div class="game-info">
             <h1>{{H1}}</h1>
