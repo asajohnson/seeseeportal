@@ -73,7 +73,7 @@ $htmlTemplate = @'
             display: block;
             border: none;
             width: 400px;
-            height: 565px;
+            height: 408px;
         }
 
         .game-info {
