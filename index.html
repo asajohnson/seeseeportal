@@ -112,7 +112,7 @@
 
         .trimester-toggles button:hover,
         .trimester-toggles button.active {
-            background: white;
+            background: #fbb61c;
             color: #667eea;
             transform: scale(1.05);
         }
@@ -122,6 +122,8 @@
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
             padding: 20px;
+            justify-items: center;
+            justify-content: center;
         }
 
         .game-card {
@@ -234,10 +236,12 @@
         }
 
         .no-games {
+            grid-column: 1 / -1;
             text-align: center;
+            font-style: italic;
             padding: 60px 20px;
             font-size: 1.2em;
-            color: rgba(255, 255, 255, 0.8);
+            color: yellow;
         }
 
         @media (max-width: 768px) {
@@ -277,7 +281,8 @@
             <img src="global-images/cmms-8bit-logo.png" alt="Cougar Mountain Middle School" class="logo">
             <h1>SeeSeePortal</h1>
         </div>
-        <p class="subtitle">Cheaper, weirder, and better than the original.</p><p>Games created by Cougar Mountain Middle School Game Design students</p>
+        <p class="subtitle" style="color: #fbb61c;"><em><strong>Cheaper, weirder, and better than the original.</em></strong></p><p>Games created by Cougar Mountain Middle School Game Design students</p>
+        <br>
         <nav>
             <a href="#" class="nav-link active" data-page="home">Home</a>
             <a href="#" class="nav-link" data-page="about">About</a>
@@ -312,7 +317,7 @@
                 <p><strong>Every game on this site was actually created by middle school game designers.</strong></p>
                 <p>Real students. Real code. Real chaos.</p>
 
-                <p>While the <em>real</em> game sites get blocked faster than you can say Windows update,” this parody site lives on because even the school filters can’t decide what to do with it. Is it a game site? Is it a class project? Is it a cosmic loophole?</p>
+                <p>While the <em>real</em> game sites get blocked faster than you can say "Windows update,” this parody site lives on because even the school filters can’t decide what to do with it. Is it a game site? Is it a class project? Is it a cosmic loophole?</p>
                 
                 <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Why we exist</h3>
                 <p>
@@ -381,56 +386,9 @@
             },
             
             // Trimester 2 Games
-            {
-                title: "Platform Jumper",
-                trimester: "trimester2",
-                thumbnail: "🏃",
-                description: "Jump between platforms and collect coins in this challenging platformer.",
-                author: "Emma Rodriguez",
-                folder: "games/platform-jumper"
-            },
-            {
-                title: "Color Match",
-                trimester: "trimester2",
-                thumbnail: "🎨",
-                description: "Match colors quickly in this fast-paced puzzle game.",
-                author: "David Kim",
-                folder: "games/color-match"
-            },
-            {
-                title: "Tower Defense",
-                trimester: "trimester2",
-                thumbnail: "🗼",
-                description: "Build towers to defend your base from waves of enemies.",
-                author: "Olivia Martinez",
-                folder: "games/tower-defense"
-            },
             
             // Trimester 3 Games
-            {
-                title: "Epic Quest",
-                trimester: "trimester3",
-                thumbnail: "⚔️",
-                description: "An RPG adventure with multiple levels, enemies, and boss battles.",
-                author: "James Anderson",
-                folder: "games/epic-quest"
-            },
-            {
-                title: "Racing Championship",
-                trimester: "trimester3",
-                thumbnail: "🏎️",
-                description: "Race against AI opponents on multiple tracks with power-ups.",
-                author: "Sophia Lee",
-                folder: "games/racing-championship"
-            },
-            {
-                title: "Puzzle Master",
-                trimester: "trimester3",
-                thumbnail: "🧠",
-                description: "A collection of brain-teasing puzzles with increasing difficulty.",
-                author: "Ethan Brown",
-                folder: "games/puzzle-master"
-            }
+
         ];
 
         let currentTrimester = 'trimester1';

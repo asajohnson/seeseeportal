@@ -165,12 +165,14 @@ $htmlTemplate = @'
     </style>
 </head>
 <body>
-    <a href="/index.html" class="back-button">← Back to Portal</a>
+    <a href="seeseeportal/index.html" class="back-button">← Back to Portal</a>
     
     <div class="game-container">
         <div class="game-frame">
             <iframe src="game-index.html" class="game-iframe" scrolling="no" allow="scripts"></iframe>
         </div>
+
+        <div><p><em>Click into the game frame to start.</em></p><br></div>
 
         <div class="game-info">
             <h1>{{H1}}</h1>
