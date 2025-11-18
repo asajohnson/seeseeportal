@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0033A0 0%, #0033A0 100%);
+            background: linear-gradient(135deg, #0033A0 0%, #999ACA 100%);
             min-height: 100vh;
             color: #FFFFFF;
         }
@@ -57,7 +57,7 @@
         }
 
         nav a {
-            color: white;
+            color: #FFFFFF;
             text-decoration: none;
             margin: 0 15px;
             padding: 8px 16px;
@@ -67,7 +67,7 @@
         }
 
         nav a:hover, nav a.active {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(253, 183, 26, 0.3);
         }
 
         .container {
@@ -98,9 +98,9 @@
         }
 
         .trimester-toggles button {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            color: white;
+            background: rgba(153, 154, 202, 0.3);
+            border: 2px solid #FFFFFF;
+            color: #FFFFFF;
             padding: 12px 30px;
             margin: 5px;
             border-radius: 25px;
@@ -112,18 +112,19 @@
 
         .trimester-toggles button:hover,
         .trimester-toggles button.active {
-            background: #fbb61c;
-            color: #667eea;
+            background: #FDB71A;
+            color: #0033A0;
+            border-color: #FDB71A;
             transform: scale(1.05);
         }
 
         .games-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 25px;
             padding: 20px;
-            justify-items: center;
             justify-content: center;
+            align-items: flex-start;
         }
 
         .game-card {
@@ -134,6 +135,8 @@
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             color: #333;
+            width: 280px;
+            flex-shrink: 0;
         }
 
         .game-card:hover {
@@ -144,7 +147,7 @@
         .game-thumbnail {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0033A0 0%, #999ACA 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -179,7 +182,7 @@
 
         .game-author {
             font-size: 0.9em;
-            color: #667eea;
+            color: #0033A0;
             font-weight: 600;
             margin-top: 10px;
             padding-top: 10px;
@@ -205,13 +208,21 @@
         }
 
         .about-content h2 {
-            color: #667eea;
+            color: #0033A0;
             margin-bottom: 20px;
             font-size: 2em;
         }
 
         .about-content p {
             margin-bottom: 15px;
+        }
+
+        .about-content h3 {
+            color: #0033A0;
+        }
+
+        .about-content strong {
+            color: #0033A0;
         }
 
         .about-content ul {
@@ -231,23 +242,31 @@
         }
 
         footer a {
-            color: white;
+            color: #FDB71A;
             margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         .no-games {
-            grid-column: 1 / -1;
+            width: 100%;
             text-align: center;
-            font-style: italic;
             padding: 60px 20px;
             font-size: 1.2em;
-            color: yellow;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         @media (max-width: 768px) {
             .games-container {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 20px;
+            }
+
+            .game-card {
+                width: 100%;
+                max-width: 280px;
             }
 
             h1 {
@@ -367,22 +386,6 @@
                 description: "Move around the screen to dodge the skeletons.",
                 author: "Ethan Tea",
                 folder: "games/2025-2026/t1/dodge-skeletons"
-            },
-            {
-                title: "Sample - Catch the Falling Stars",
-                trimester: "trimester1",
-                thumbnail: "⭐",
-                description: "Move your basket to catch as many falling stars as you can.",
-                author: "Sarah Chen",
-                folder: "games/catch-stars"
-            },
-            {
-                title: "Sample - Simple Maze",
-                trimester: "trimester1",
-                thumbnail: "🧩",
-                description: "Guide your character through the maze to reach the goal.",
-                author: "Marcus Williams",
-                folder: "games/simple-maze"
             },
             
             // Trimester 2 Games
