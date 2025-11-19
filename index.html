@@ -1,9 +1,17 @@
+<!-- The SeeSeePortal website index code is here, including 
+ the Home Page, About Page, and AI Usage page. 
+ It contains all the HTML, JS, and CSS for these pages. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeeSeePortal - CMMS Game Design</title>
+    <!-- Pulling in custom fonts from Google Fonts to use on this site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS style sheet for the index page -->
     <style>
         * {
             margin: 0;
@@ -12,7 +20,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0033A0 0%, #999ACA 100%);
             min-height: 100vh;
             color: #FFFFFF;
@@ -93,8 +101,9 @@
 
         .trimester-toggles {
             text-align: center;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 10px;
+            margin-bottom: 0px;
+            font-family: 'Poppins', sans-serif;
         }
 
         .trimester-toggles button {
@@ -108,6 +117,7 @@
             transition: all 0.3s;
             font-size: 16px;
             font-weight: 600;
+            font-family: 'Poppins', sans-serif;
         }
 
         .trimester-toggles button:hover,
@@ -225,6 +235,7 @@
 
         .about-content h3 {
             color: #0033A0;
+            margin-bottom: 10px;
         }
 
         .about-content strong {
@@ -232,7 +243,7 @@
         }
 
         .about-content ul {
-            margin-left: 20px;
+            margin-left: 40px;
             margin-bottom: 15px;
         }
 
@@ -300,7 +311,9 @@
         }
     </style>
 </head>
+<!-- The main body code for the index page. -->
 <body>
+    <!-- The header code for the index page. -->
     <header>
         <div class="logo-container">
             <img src="global-images/cmms-8bit-logo.png" alt="Cougar Mountain Middle School" class="logo">
@@ -311,40 +324,46 @@
         <nav>
             <a href="#" class="nav-link active" data-page="home">Home</a>
             <a href="#" class="nav-link" data-page="about">About</a>
+            <a href="#" class="nav-link" data-page="ai">AI Usage</a>
         </nav>
     </header>
-
+    <!-- The code for the "home" page. -->
     <div id="homePage" class="page active">
+        <!-- The code for the search bar -->
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search for games..." onkeyup="filterGames()">
         </div>
 
+        <!-- The code for the trimester toggles. -->
         <div class="trimester-toggles">
             <button class="active" onclick="filterByTrimester('trimester1')">Trimester 1</button>
             <button onclick="filterByTrimester('trimester2')">Trimester 2</button>
             <button onclick="filterByTrimester('trimester3')">Trimester 3</button>
         </div>
 
+        <!-- The code for the game tile section. -->
         <div class="container">
             <div class="games-container" id="gamesContainer">
                 <!-- Games will be dynamically inserted here -->
             </div>
         </div>
     </div>
-
+        
+    <!-- The code for the "About" page. -->
     <div id="aboutPage" class="page">
         <div class="container">
             <div class="about-content">
                 <h2>About SeeSeePortal</h2>
+                <img src="global-images/school-block-meme.jpg" alt="Meme saying 'When your school finds a gaming website' and has a hand hitting a button that says 'Block'." style="display: block; margin: 20px auto; max-width: 50%; height: auto; border-radius: 10px;">
                 <p>Welcome to SeeSeePortal, the totally-not-suspicious, definitely-not-blocked, parody version of that game site everyone keeps trying to open during class. You know the one. Yeah… that one.</p>
                 
                 <p>But here’s the twist:</p>
-                <p><strong>Every game on this site was actually created by middle school game designers.</strong></p>
-                <p>Real students. Real code. Real chaos.</p>
-
+                <h3><center><em>Every game on this site was created by middle school game designers.</center></em></h3>
+                <h3><center><em>Real students. Real code. Real chaos.</center></em></h3>
+                <img src="global-images/game-dev-meme.webp" alt="Meme of a developer having to pick between building games or playing games." style="display: block; margin: 20px auto; max-width: 40%; max-height: 50%; border-radius: 10px;">
                 <p>While the <em>real</em> game sites get blocked faster than you can say "Windows update,” this parody site lives on because even the school filters can’t decide what to do with it. Is it a game site? Is it a class project? Is it a cosmic loophole?</p>
                 
-                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Why we exist</h3>
+                <h3>Why did we do this?</h3>
                 <p>
                     <ul>
                         <li>To celebrate the creativity of student game developers.</li>
@@ -354,7 +373,7 @@
                     </ul>
                 </p>
                 
-                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">What you'll find here</h3>
+                <h3>What you'll find here</h3>
                 <p>A growing collection of:
                     <ul>
                         <li>Off-brand, student-built versions of classic game ideas</li>
@@ -366,10 +385,10 @@
                 
                 <p>We hope you enjoy playing these games as much as our students enjoyed creating them!</p>
 
-                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">A note to teachers and IT departments</h3>
+                <h3>A note to teachers and IT departments</h3>
                 <p>Don’t worry - this site is actually educational. It’s full of logic, coding, problem-solving, creativity… and absolutely <em>zero</em> attempts to hide browser tabs. (Probably.)</p>
 
-                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Enjoy the games!</h3>
+                <h3>Enjoy the games!</h3>
                 <p>Whether you’re here to play, browse student creations, or just enjoy a parody site that somehow survived being blocked… welcome aboard.</p>
 
                 <p>Now go invade some space. Or do your homework. Either works.</p>
@@ -377,14 +396,39 @@
         </div>
     </div>
 
+    <!-- The code for the "AI Usage" page. -->
+    <div id="aiPage" class="page">
+        <div class="container">
+            <div class="about-content">
+                <h2>AI Usage</h2>
+                <p>AI is part of the world our students are growing up in, so learning to use it well matters. Our game and website development used AI to spark ideas, speed up work, tutor, and build smarter - not as a shortcut, but as a tool students should feel confident using.</p>
+                <p>Here are the ways we used AI to build this project.</p>
+                <h3>Game Development</h3>
+                <ul>
+                    <li>Troubleshooting Code: ChatGPT, Copilot, Claude</li>
+                </ul>
+                <h3>Website Development</h3>
+                <ul>
+                    <li>CMMS Falcon Logo: Google Gemini to convert to 8-bit for a more retro game style</li>
+                    <li>Website Development: Claude for help writing HTML, CSS, and JavaScript</li>
+                    <li>Website Text: ChatGPT for editorial</li>
+                </ul>
+                <img src="global-images/ai-meme.webp" alt="AI-generated 2-column picture of a person in front of a computer with the caption 'We used to Google it, now we just ask.'" style="display: block; margin: 20px auto; max-width: 50%; height: auto; border-radius: 10px;">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The code for the footer -->
     <footer>
-        <p>© 2024 Cougar Mountain Middle School | SeeSeePortal</p>
+        <p>© 2025 Cougar Mountain Middle School | SeeSeePortal</p>
     </footer>
 
+    <!-- The code that generates the game tiles -->
     <script>
-        // Sample game data - Replace with your actual games
         const games = [
-            // Trimester 1 Games
+            // Trimester 1 Games (trimester: trimester1)
+            // Need one array for every game. 
             {
                 title: "Dodge the Skeletons",
                 trimester: "trimester1",
@@ -425,17 +469,23 @@
                 author: "JL",
                 folder: "games/2025-2026/t1/the-buzzers"
             },
-            // Trimester 2 Games
-            
-            // Trimester 3 Games
+            // Trimester 2 Games (trimester: trimester2)
+            // Need one array for every game.
+
+            // Trimester 3 Games (trimester: trimester3)
+            // Need one array for every game.
+
 
         ];
 
+        //This sets the default active trimester button.
         let currentTrimester = 'trimester1';
 
+        //This sets the default active trimester button.
         function renderGames(gamesToRender) {
             const container = document.getElementById('gamesContainer');
             
+            //Shows a message if no games exist for that trimester.
             if (gamesToRender.length === 0) {
                 container.innerHTML = '<div class="no-games">No games found. Check back soon!</div>';
                 return;
@@ -443,6 +493,7 @@
             
             container.innerHTML = '';
             
+            //Creates a tile for each game that exists.
             gamesToRender.forEach(game => {
                 const card = document.createElement('div');
                 card.className = 'game-card';
@@ -466,6 +517,7 @@
             });
         }
 
+        //Filters the game tiles to show only the ones for the trimester toggle that is active.
         function filterByTrimester(trimester) {
             currentTrimester = trimester;
             
