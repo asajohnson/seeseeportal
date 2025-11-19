@@ -744,6 +744,7 @@ function gameOver() {
   }
 }
 //Wow thats a lot of lines
+
 // -----
     try { window.draw = draw; } catch (e) {}
     switch (stage) {
