@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVP Battles - SeeSeePortal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0033A0 0%, #999ACA 100%);
+            min-height: 100vh;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .game-frame {
+            background: rgba(255, 255, 255, 0.95);
+            border: 3px solid #FDB71A;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .game-iframe {
+            display: block;
+            border: none;
+            width: 401px;
+            height: 401px;
+        }
+
+        .game-info {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-info h1 {
+            color: #0033A0;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .game-info .description {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .game-info .meta {
+            color: #999ACA;
+            font-size: 0.95em;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #eee;
+        }
+
+        .game-info .meta strong {
+            color: #0033A0;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(253, 183, 26, 0.9);
+            color: #0033A0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: #FDB71A;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .game-iframe {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .game-frame {
+                width: 100%;
+            }
+
+            .game-info h1 {
+                font-size: 1.5em;
+            }
+
+            .game-info {
+                padding: 20px;
+            }
+
+            .back-button {
+                position: static;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../../../index.html" class="back-button">← Back to Portal</a>
+    
+    <div class="game-container">
+        <div class="game-frame">
+            <iframe src="game-index.html" class="game-iframe" scrolling="no" allow="scripts"></iframe>
+        </div>
+
+        <div><p><em>Click into the game frame to start.</em></p><br></div>
+        <div><p><em>Refresh the screen to restart the game if it doesn't restart itself.</em></p></div>
+        <br>
+        <div class="game-info">
+            <h1>PVP Battles</h1>
+            <p class="description">
+                Use swords, barbs, and axes to fight against your friends. Fight on many different maps.
+            </p>
+            <div class="meta">
+                <strong>Created by:</strong> RD<br>
+                <strong>Published:</strong> November 19, 2025
+            </div>
+        </div>
+    </div>
+</body>
+</html>
