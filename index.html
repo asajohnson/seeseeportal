@@ -147,7 +147,7 @@
         .game-thumbnail {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #0033A0 0%, #999ACA 100%);
+            background: linear-gradient(135deg, #FDB71A 0%, #E5A615 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -157,9 +157,15 @@
         }
 
         .game-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 50%;
+            height: 50%;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+
+        .game-thumbnail-emoji {
+            font-size: 60px;
         }
 
         .game-info {
@@ -382,7 +388,7 @@
             {
                 title: "Dodge the Skeletons",
                 trimester: "trimester1",
-                thumbnail: "💀",
+                thumbnail: "games/2025-2026/t1/dodge-skeletons/assets/e67999c9-672e-4ec9-9f2d-e0434c2128bd.png",
                 description: "Move around the screen to dodge the skeletons.",
                 author: "ET",
                 folder: "games/2025-2026/t1/dodge-skeletons"
@@ -390,7 +396,7 @@
             {
                 title: "Alien Fight",
                 trimester: "trimester1",
-                thumbnail: "💀",
+                thumbnail: "games/2025-2026/t1/alien-fight/assets/07f7fa98-40e4-497d-9e29-384529450198.png",
                 description: "Aliens will try to attack the player and in order for the player to win he needs to collect all the humans.",
                 author: "EF",
                 folder: "games/2025-2026/t1/alien-fight"
@@ -398,7 +404,7 @@
             {
                 title: "Ball of Doom",
                 trimester: "trimester1",
-                thumbnail: "💀",
+                thumbnail: "games/2025-2026/t1/ball-of-doom/assets/v3/animations/6paaUGLc5oKshgwm_qJI97LCNbCOLiv5mZEfezWSPRY/5aa5acca-4a56-40da-adb2-82030cc4f9bd.png",
                 description: "You are a rolling ball that jump and there are obstacles.",
                 author: "FK",
                 folder: "games/2025-2026/t1/ball-of-doom"
@@ -406,7 +412,7 @@
             {
                 title: "PvP Battles",
                 trimester: "trimester1",
-                thumbnail: "💀",
+                thumbnail: "games/2025-2026/t1/pvp-battles/assets/1ec0754a-b522-4e3d-8d91-4e25c5a7a670.png",
                 description: "Battle against your friends.",
                 author: "RD",
                 folder: "games/2025-2026/t1/pvp-battles"
@@ -414,7 +420,7 @@
             {
                 title: "The Buzzers",
                 trimester: "trimester1",
-                thumbnail: "💀",
+                thumbnail: "games/2025-2026/t1/the-buzzers/assets/api/v1/animation-library/gamelab/N602_cNy0LoPLXkwaUfCp2XJWPo86SUw/category_animals/bee.png",
                 description: "Try not to die and collect gold.",
                 author: "JL",
                 folder: "games/2025-2026/t1/the-buzzers"
@@ -442,8 +448,13 @@
                 card.className = 'game-card';
                 card.onclick = () => window.location.href = `${game.folder}/index.html`;
                 
+                const isImage = game.thumbnail.includes('.') || game.thumbnail.includes('/');
+                const thumbnailHTML = isImage 
+                    ? `<img src="${game.thumbnail}" alt="${game.title}">`
+                    : `<span class="game-thumbnail-emoji">${game.thumbnail}</span>`;
+                
                 card.innerHTML = `
-                    <div class="game-thumbnail">${game.thumbnail}</div>
+                    <div class="game-thumbnail">${thumbnailHTML}</div>
                     <div class="game-info">
                         <div class="game-title">${game.title}</div>
                         <div class="game-description">${game.description}</div>
