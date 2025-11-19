@@ -187,6 +187,8 @@
             font-weight: bold;
             margin-bottom: 8px;
             color: #333;
+            display: flex;
+            align-items: center;
         }
 
         .game-description {
@@ -515,6 +517,32 @@
                 
                 container.appendChild(card);
             });
+
+            // Equalize title heights after rendering
+            setTimeout(() => {
+                const titles = document.querySelectorAll('.game-title');
+                if (titles.length > 0) {
+                    let maxHeight = 0;
+                    
+                    // Reset heights first
+                    titles.forEach(title => {
+                        title.style.height = 'auto';
+                    });
+                    
+                    // Find the tallest title
+                    titles.forEach(title => {
+                        const height = title.offsetHeight;
+                        if (height > maxHeight) {
+                            maxHeight = height;
+                        }
+                    });
+                    
+                    // Set all titles to the max height
+                    titles.forEach(title => {
+                        title.style.height = maxHeight + 'px';
+                    });
+                }
+            }, 100);
         }
 
         //Filters the game tiles to show only the ones for the trimester toggle that is active.
