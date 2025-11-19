@@ -56,7 +56,7 @@ var gameover = false;
 // detects if the game is running
 var bg3s = 0;
 // the size of background 3's pulsing circle
-var bg = randomNumber(1, 3);
+var bg = 0;
 // what background will be selected
 var bg1canheal = true;
 // says if bg1's heal square can heal
@@ -68,6 +68,8 @@ var healsquaretimeoffset = randomNumber(200, 10000);
 // amount of time to the heal square to be made
 var healsquarehashealed = false;
 // detects if the heal square has healed
+var gamestart = false;
+// checks if the game has started
 var axe = createSprite(320, 200);
 axe.setAnimation("Axeh");
 axe.setCollider("circle", -75, -80, 55);
@@ -78,15 +80,19 @@ axe2.setCollider("circle", 75, -80, 55);
 // making p2's axe
 var p1 = createSprite(320, 200);
 p1.setAnimation("p1f");
+p1.visible = false;
 // making p1
 var p2 = createSprite(80, 200);
 p2.setAnimation("p2");
+p2.visible = false;
 // making p2
 var sword = createSprite(305, 200);
 sword.setAnimation("swordh");
+sword.setCollider("rectangle", -325, -250, -300, 100);
 // making p1's sword
 var p2s = createSprite(90, 200);
 p2s.setAnimation("p2sh");
+p2s.setCollider("rectangle", 325, -250, -300, 100);
 // making p2's sword
 sword.scale = 0.17;
 p2s.scale = 0.17;
@@ -105,17 +111,62 @@ axe2.scale = 0.75;
 
 // the main draw loop
 function draw() {
+ if (gamestart==false) {
+   // starting screen code
+   background("black");
+   textSize(20);
+   stroke("blue");
+   fill("blue");
+   text("p1 use i, j, k, l, u, y", 112.5, 66);
+   stroke("red");
+   fill("red");
+   text("p2 use w, a, s, d, e, r", 105, 132);
+   stroke("white");
+   fill("white");
+   text("Press 1 to play a random normal map", 30, 198);
+   text("Press 2 to play king of the hill mode", 35, 264);
+   text("Press 3 to play a random mode", 50, 330);
+   if (keyDown("1")) {
+     gamestart = true;
+     // starts the game
+     bg = randomNumber(2, 3);
+     // randomizes the background
+     p1.visible = true;
+     p2.visible = true;
+     // makes the players visible
+   }
+   if (keyDown("2")) {
+     gamestart = true;
+     // starts the game
+     bg = 1;
+     // puts the background to king of the hill mode
+     p1.visible = true;
+     p2.visible = true;
+     // makes the players visible
+   }
+   if (keyDown("3")) {
+     gamestart = true;
+     // starts the game
+     bg = randomNumber(1, 3);
+     // randomizes the background and the gamemode
+     p1.visible = true;
+     p2.visible = true;
+     // makes the players invisible
+   }
+ }
  // gameover code for p2
  if (p2hp <= 0) {
     GameOver();
     fill("blue");
     text("P1 Won", 140, 200);
+    resetgame();
   }
   // gameover code for p1
  if (p1hp <= 0) {
     GameOver();
     fill("red");
     text("P2 Won", 140, 200);
+    resetgame();
   }
   // all background code
   // every time you run a random background is selected
@@ -133,47 +184,55 @@ function draw() {
       drawb3();
     }
   }
- if (gameover == false) {
+ if (gameover == false && gamestart == true) {
     // all code below this only activeates if gameover is not true
-    // background 3's healing square code
+    // background 1's healing square code
     if (bg==1) {
       if (bg1canheal == true) {
         if (p1hp<=5&&p2hp<=5) {
          if (healsquarehashealed == false) {
            candrawhealsquare = true;
            setTimeout(function() {         
-           if (165 <= p1.x && p1.x <= 235 && 165 <= p1.y && p1.y <= 235) {
-              setTimeout(function() {if (165 <= p1.x && p1.x <= 235 && 165 <= p1.y && p1.y <= 235)isgoingtoheal = 1}, 0);
-              console.log("p1heal");
-              setTimeout(function() {candrawhealsquare = false;}, 1000);
+           if (165 <= p1.x && p1.x <= 235 && 165 <= p1.y && p1.y <= 235); {
+              setTimeout(function() {if (165 <= p1.x && p1.x <= 235 && 165 <= p1.y && p1.y <= 235)isgoingtoheal = 1}, 0);// remove this semicolin to show blocks
+              setTimeout(function() {candrawhealsquare = false;}, 1000);// remove this semicolin to show blocks
             }
            if (165 <= p2.x && p2.x <= 235 && 165 <= p2.y && p2.y <= 235) {
-              setTimeout(function() {if (165 <= p2.x && p2.x <= 235 && 165 <= p2.y && p2.y <= 235)isgoingtoheal = 2}, 0);
-              setTimeout(function() {candrawhealsquare = false;}, 1000);
-              console.log("p2heal");
+              setTimeout(function() {if (165 <= p2.x && p2.x <= 235 && 165 <= p2.y && p2.y <= 235)isgoingtoheal = 2}, 0);// remove this semicolin to show blocks
+              setTimeout(function() {candrawhealsquare = false;}, 1000);// remove this semicolin to show blocks
             }}, healsquaretimeoffset);
          }
+         // removes the healsquare
          fill("orange");
          rect(175, 175, 50, 50);
         }
+        // p1 healing square code
         if (isgoingtoheal == 1) {
+          // healse p1
           p1hp=p1hp+3;
+          // makes varaibles false
           bg1canheal = false;
           candrawhealsquare = false;
           healsquarehashealed = false;
+          // removes healing square code
           fill("orange");
           rect(175, 175, 50, 50);
         }
+        // p2 healing square code
         if (isgoingtoheal == 2) {
+          // healse p2
           p2hp=p2hp+3;
+          // make svaraibles false
           bg1canheal = false;
           candrawhealsquare = false;
           healsquarehashealed = false;
+          // removes the heal square
           fill("orange");
           rect(175, 175, 50, 50);
         }
       }
       if (candrawhealsquare == true) {
+        // draws the heal square
         fill("green");
         rect(175, 175, 50, 50);
       }
@@ -209,8 +268,8 @@ function draw() {
     //p1's right movement code
     if (380 > p1.x) {
       if (sword_d == 1) {
-        if (keyDown("j") && p1xi!=1) {
-           sword.x = sword.x + -15;
+        if (keyDown("l") && p1xi!=1) {
+           sword.setCollider("rectangle", 325, -250, -300, 100);
          }
       }
       if (keyDown("l") && p1xi!=1) {
@@ -226,6 +285,7 @@ function draw() {
       if (sword_d == 1) {
         if (keyDown("j") && p1xi!=1) {
            sword.x = sword.x + -15;
+           sword.setCollider("rectangle", 325, -250, 300, 500);
          }
       }
       if (keyDown("j") && p1xi!=1) {
@@ -416,11 +476,15 @@ function draw() {
     }
     // p2 left movement code
     if (p2.x > 20) {
-      if (p2s_d == 1) {
+      if (p2s_d==1) {
         if (keyDown("a") && p2xi!=1) {
            p2s.x = p2s.x + -15;
+           p2s.setCollider("rectangle", 325, -250, 300, 100);
          }
       }
+      if (keyDown("d") && p2xi!=1) {
+         p2s.setCollider("rectangle", 325, -250, -300, 100);
+       }
       if (keyDown("a") && p2xi!=1) {
          p2.x = p2.x + -10;
          p2s_d = 2;
@@ -646,11 +710,31 @@ function drawb2() {
 }
 function drawb3() {
   // drawing the 3rd background
-  background("blue");
+  background("black");
   //randomizes the size of background's pulsing circle
-  bg3s = randomNumber(250, 350);
-  fill("purple");
+  bg3s = randomNumber(525, 575);
+  fill("yellow");
   ellipse(200, 200, bg3s, bg3s);
+  fill("black");
+  ellipse(200, 200, bg3s-50, bg3s-50);
+  fill("yellow");
+  ellipse(200, 200, bg3s-100, bg3s-100);
+  fill("black");
+  ellipse(200, 200, bg3s-150, bg3s-150);
+  fill("yellow");
+  ellipse(200, 200, bg3s-200, bg3s-200);
+  fill("black");
+  ellipse(200, 200, bg3s-250, bg3s-250);
+  fill("yellow");
+  ellipse(200, 200, bg3s-300, bg3s-300);
+  fill("black");
+  ellipse(200, 200, bg3s-350, bg3s-350);
+  fill("yellow");
+  ellipse(200, 200, bg3s-400, bg3s-400);
+  fill("black");
+  ellipse(200, 200, bg3s-450, bg3s-450);
+  fill("yellow");
+  ellipse(200, 200, bg3s-500, bg3s-500);
 }
 // game over code
 function GameOver() {
@@ -662,6 +746,70 @@ function GameOver() {
   // makes p1 and p2 invisible
   p2.visible = false;
   p1.visible = false;
+}
+function resetgame() {
+  fill("white");
+  textSize(20);
+  text("press space to restart", 100, 285);
+  if (keyWentDown("space")) {
+    p1si = 2;
+    p1xi = 2;
+    bg = 0;
+    healsquaretimeoffset = randomNumber(200, 10000);
+    healsquarehashealed = false;
+    axe.x = 320;
+    axe.y = 200;
+    axe.setAnimation("Axeh");
+    axe2.x = 80;
+    axe2.y = 200;
+    axe2.setAnimation("Axeh2");
+    p1.x = 320;
+    p1.y = 200;
+    p1.setAnimation("p1f");
+    p2.x = 80;
+    p2.y = 200;
+    p2.setAnimation("p2");
+    sword.x = 305;
+    sword.y = 200;
+    sword.setAnimation("swordh");
+    p2s.x = 90;
+    p2s.y = 200;
+    p2s.setAnimation("p2sh");
+    var p1si = 2;
+// detects if player one sword is active
+p1xi = 2;
+// decects if player one axe is active
+p2si = 2;
+// decects if player two sword is active
+p2xi = 2;
+// decects if player two axe is active
+p2hp = 10;
+// player two hp value
+p1hp = 10;
+// player one hp value
+sword_d = 2;
+// player one sword direction
+p2s_d = 1;
+// player two sword direction
+gameover = false;
+// detects if the game is running
+bg3s = 0;
+// the size of background 3's pulsing circle
+bg = 0;
+// what background will be selected
+bg1canheal = true;
+// says if bg1's heal square can heal
+candrawhealsquare = false;
+// says if you can draw bg1's heal square
+isgoingtoheal = 0;
+// says if bg1's heal squre is going to heal
+healsquaretimeoffset = randomNumber(200, 10000);
+// amount of time to the heal square to be made
+healsquarehashealed = false;
+// detects if the heal square has healed
+gamestart = false;
+// checks if the game has started
+  }
 }
 
 // -----
