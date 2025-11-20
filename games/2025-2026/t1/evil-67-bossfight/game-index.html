@@ -10,6 +10,12 @@
     <script src="p5.js"></script>
     <script src="p5.play.js"></script>
     <script src="code.js"></script>
+    <script>
+        // Polyfill for Code.org's timedLoop function
+        window.timedLoop = function(interval, callback) {
+            setInterval(callback, interval);
+        };
+    </script>
     <style>
       body.expo {
         background-color: black;
