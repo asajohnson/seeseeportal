@@ -1,7 +1,7 @@
 
 <html>
   <head>
-    <title>my-app</title>
+    <title>Astroid Blaster - SeeSeePortal</title>
     <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
@@ -10,6 +10,79 @@
     <script src="p5.js"></script>
     <script src="p5.play.js"></script>
     <script src="code.js"></script>
+    <script>
+        // Comprehensive polyfills for Code.org Game Lab functions
+        
+        // Mock appOptions and pageConstants
+        window.appOptions = {
+            pageConstants: {
+                channelId: 'local',
+                isShareView: true,
+                assetUrl: function(path) {
+                    // Remove any Code.org specific path prefixes
+                    if (path.startsWith('/v3/')) {
+                        return 'assets/' + path.split('/').pop();
+                    }
+                    return path;
+                }
+            },
+            level: {
+                assetUrl: function(path) {
+                    if (path.startsWith('/v3/')) {
+                        return 'assets/' + path.split('/').pop();
+                    }
+                    return path;
+                }
+            }
+        };
+        
+        // Mock Dashboard
+        window.Dashboard = {
+            project: {
+                getCurrentId: function() { return 'local'; }
+            }
+        };
+        
+        // Override playSound to prevent errors
+        window.playSound = function(sound, loop) {
+            try {
+                // Try to play the sound if audio files exist
+                var audio = new Audio(sound);
+                if (loop) {
+                    audio.loop = true;
+                }
+                audio.play().catch(function(e) {
+                    console.log('Sound not available:', sound);
+                });
+            } catch(e) {
+                console.log('Sound disabled:', sound);
+            }
+        };
+        
+        // Polyfill for timedLoop if needed
+        if (typeof timedLoop === 'undefined') {
+            window.timedLoop = function(interval, callback) {
+                setInterval(callback, interval);
+            };
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="gamelab-api.js"></script>
+    <link href="gamelab.css" rel="stylesheet" type="text/css">
+    <script src="p5.js"></script>
+    <script src="p5.play.js"></script>
+    <script src="code.js"></script>
+    <style>
+      body.expo {
+        background-color: black;
+      }
+      #sketch.expo.no-controls {
+        top: 82px;
+      }
+      #studio-dpad-container {
+        display: none !important;
+      }
+    </style>
     <style>
       body.expo {
         background-color: black;
