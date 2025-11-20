@@ -4,15 +4,37 @@
     <title>my-app</title>
     <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-            <script>
+<head>
+    <title>my-app</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
         // Mock Code.org environment for games running outside their platform
         window.appOptions = {
             pageConstants: {
-                channelId: '',
-                isShareView: true
+                channelId: 'local',
+                isShareView: true,
+                assetUrl: function(path) {
+                    return path;
+                }
+            },
+            level: {
+                assetUrl: function(path) {
+                    return path;
+                }
+            }
+        };
+        
+        // Additional mock for sound system
+        window.Dashboard = {
+            project: {
+                getCurrentId: function() { return 'local'; }
             }
         };
     </script>
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="gamelab-api.js"></script>
+    <!-- rest of your scripts -->
         <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
         <script src="gamelab-api.js"></script>
     <link href="gamelab.css" rel="stylesheet" type="text/css">
