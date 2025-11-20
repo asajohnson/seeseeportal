@@ -1,4 +1,9 @@
-
+// Polyfill for Code.org functions when running externally
+if (typeof timedLoop === 'undefined') {
+    window.timedLoop = function(interval, callback) {
+        setInterval(callback, interval);
+    };
+}
 
 var p5Inst = new p5(null, 'sketch');
 
