@@ -1,4 +1,12 @@
-
+// Override playSound to prevent errors when hosted externally
+var originalPlaySound = playSound;
+playSound = function(sound) {
+    try {
+        originalPlaySound(sound);
+    } catch(e) {
+        console.log('Sound disabled:', sound);
+    }
+};
 
 var p5Inst = new p5(null, 'sketch');
 
