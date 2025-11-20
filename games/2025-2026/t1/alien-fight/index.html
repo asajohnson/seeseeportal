@@ -140,6 +140,47 @@
             }
         }
     </style>
+        <script src="code.js"></script>
+    <script>
+        // Fix mouse coordinates for iframe embedding
+        window.addEventListener('load', function() {
+            // Override p5's mouseX and mouseY to work correctly in iframes
+            if (typeof p5 !== 'undefined') {
+                var originalMouseX = null;
+                var originalMouseY = null;
+                
+                // Wait for p5 instance to be created
+                setTimeout(function() {
+                    if (window.p5Instance) {
+                        var sketch = window.p5Instance;
+                        
+                        // Store original values
+                        Object.defineProperty(sketch, 'mouseX', {
+                            get: function() {
+                                return sketch.mouseX || 0;
+                            }
+                        });
+                        
+                        Object.defineProperty(sketch, 'mouseY', {
+                            get: function() {
+                                return sketch.mouseY || 0;
+                            }
+                        });
+                    }
+                }, 1000);
+            }
+            
+            // Make canvas focusable and capture clicks
+            var canvas = document.querySelector('canvas');
+            if (canvas) {
+                canvas.tabIndex = 1;
+                canvas.focus();
+                canvas.addEventListener('click', function() {
+                    canvas.focus();
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <a href="../../../../index.html" class="back-button">← Back to Portal</a>
