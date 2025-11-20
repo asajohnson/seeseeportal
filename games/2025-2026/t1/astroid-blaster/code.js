@@ -13,6 +13,7 @@ window.preload = function () {
   orderedKeys.forEach(function (key) {
     var props = animationListJSON.propsByKey[key];
     var frameCount = allAnimationsSingleFrame ? 1 : props.frameCount;
+    console.log('Loading image with path:', props.rootRelativePath);
     var image = loadImage(props.rootRelativePath, function () {
       var spriteSheet = loadSpriteSheet(
           image,
