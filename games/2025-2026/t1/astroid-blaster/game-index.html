@@ -10,8 +10,14 @@
     <script src="p5.js"></script>
     <script src="p5.play.js"></script>
     <script src="code.js"></script>
+Updated Fix
+Update your polyfill script in game-index.html to better handle asset paths:
+html<head>
+    <title>my-app</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
-        // Comprehensive polyfills for Code.org Game Lab functions
+        // Enhanced polyfills for Code.org Game Lab functions
         
         // Mock appOptions and pageConstants
         window.appOptions = {
@@ -19,19 +25,31 @@
                 channelId: 'local',
                 isShareView: true,
                 assetUrl: function(path) {
-                    // Remove any Code.org specific path prefixes
+                    // Handle various Code.org path formats
+                    if (!path || typeof path !== 'string') {
+                        console.warn('Invalid asset path:', path);
+                        return '';
+                    }
+                    
+                    // Remove Code.org specific prefixes
                     if (path.startsWith('/v3/')) {
                         return 'assets/' + path.split('/').pop();
                     }
+                    if (path.startsWith('/api/')) {
+                        return 'assets/' + path.split('/').pop();
+                    }
+                    
+                    // If it's already a relative path, use it
+                    if (path.startsWith('assets/')) {
+                        return path;
+                    }
+                    
                     return path;
                 }
             },
             level: {
                 assetUrl: function(path) {
-                    if (path.startsWith('/v3/')) {
-                        return 'assets/' + path.split('/').pop();
-                    }
-                    return path;
+                    return window.appOptions.pageConstants.assetUrl(path);
                 }
             }
         };
@@ -46,7 +64,6 @@
         // Override playSound to prevent errors
         window.playSound = function(sound, loop) {
             try {
-                // Try to play the sound if audio files exist
                 var audio = new Audio(sound);
                 if (loop) {
                     audio.loop = true;
@@ -59,12 +76,28 @@
             }
         };
         
-        // Polyfill for timedLoop if needed
+        // Polyfill for timedLoop
         if (typeof timedLoop === 'undefined') {
             window.timedLoop = function(interval, callback) {
                 setInterval(callback, interval);
             };
         }
+        
+        // Fix loadImage to handle Code.org paths
+        var originalLoadImage = null;
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (window.loadImage && !originalLoadImage) {
+                    originalLoadImage = window.loadImage;
+                    window.loadImage = function(path, successCallback, failureCallback) {
+                        if (path && typeof path === 'string') {
+                            path = window.appOptions.pageConstants.assetUrl(path);
+                        }
+                        return originalLoadImage.call(this, path, successCallback, failureCallback);
+                    };
+                }
+            }, 100);
+        });
     </script>
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="gamelab-api.js"></script>
