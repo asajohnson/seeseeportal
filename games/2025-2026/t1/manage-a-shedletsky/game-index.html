@@ -19,6 +19,25 @@
       }
     </style>
   </head>
+  <script>
+  // Game Lab configuration
+  var appOptions = {
+    "levelGameName": "Manage a Shedletsky",
+    "skinId": "gamelab",
+    "baseUrl": "./",
+    "containerId": "divGameLab",
+    "pretty": "",
+    "nativeVizWidth": 400,
+    "visualizeScale": 1,
+    "embedded": true,
+    "hideSource": true,
+    "pageConstants": {
+      "assetUrl": function(path) {
+        return path;
+      }
+    }
+  };
+</script>
   <body class="web" style="margin:0; overflow:hidden; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; position:fixed; top:0; left:0; width:400px; height:565px;">
     <div id="sketch" class="web" style="position:absolute;"></div>
     <div id="soft-buttons" style="display: none">
