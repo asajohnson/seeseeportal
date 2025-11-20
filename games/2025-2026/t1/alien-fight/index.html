@@ -50,6 +50,7 @@
             border: none;
             width: 401px;
             height: 401px;
+            pointer-events: auto;
         }
 
         .game-info {
@@ -145,7 +146,7 @@
     
     <div class="game-container">
         <div class="game-frame">
-            <iframe src="game-index.html" class="game-iframe" scrolling="no" allow="scripts"></iframe>
+            <iframe src="game-index.html" class="game-iframe" scrolling="no"></iframe>
         </div>
 
         <div><p><em>Click into the game frame to start.</em></p><br></div>
@@ -163,5 +164,19 @@
             </div>
         </div>
     </div>
+    <script>
+        // Auto-focus iframe when clicked to enable game interactions
+        const iframe = document.querySelector('.game-iframe');
+        
+        iframe.addEventListener('load', function() {
+            // Focus iframe after it loads
+            iframe.contentWindow.focus();
+        });
+        
+        // Re-focus when clicking on the game frame
+        document.querySelector('.game-frame').addEventListener('click', function() {
+            iframe.contentWindow.focus();
+        });
+    </script>
 </body>
 </html>
