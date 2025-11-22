@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alien Fight - SeeSeePortal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,7 +12,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0033A0 0%, #999ACA 100%);
             min-height: 100vh;
             color: #FFFFFF;
@@ -42,15 +39,20 @@
             padding: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             margin-bottom: 30px;
-            overflow: hidden;
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .game-iframe {
             display: block;
             border: none;
-            width: 401px;
-            height: 401px;
-            pointer-events: auto;
+            width: 450px;
+            height: 480px;
         }
 
         .game-info {
@@ -120,6 +122,7 @@
             .game-iframe {
                 width: 100%;
                 max-width: 400px;
+                height: 400px;
             }
 
             .game-frame {
@@ -140,59 +143,15 @@
             }
         }
     </style>
-        <script src="code.js"></script>
-    <script>
-        // Fix mouse coordinates for iframe embedding
-        window.addEventListener('load', function() {
-            // Override p5's mouseX and mouseY to work correctly in iframes
-            if (typeof p5 !== 'undefined') {
-                var originalMouseX = null;
-                var originalMouseY = null;
-                
-                // Wait for p5 instance to be created
-                setTimeout(function() {
-                    if (window.p5Instance) {
-                        var sketch = window.p5Instance;
-                        
-                        // Store original values
-                        Object.defineProperty(sketch, 'mouseX', {
-                            get: function() {
-                                return sketch.mouseX || 0;
-                            }
-                        });
-                        
-                        Object.defineProperty(sketch, 'mouseY', {
-                            get: function() {
-                                return sketch.mouseY || 0;
-                            }
-                        });
-                    }
-                }, 1000);
-            }
-            
-            // Make canvas focusable and capture clicks
-            var canvas = document.querySelector('canvas');
-            if (canvas) {
-                canvas.tabIndex = 1;
-                canvas.focus();
-                canvas.addEventListener('click', function() {
-                    canvas.focus();
-                });
-            }
-        });
-    </script>
 </head>
 <body>
     <a href="../../../../index.html" class="back-button">← Back to Portal</a>
     
     <div class="game-container">
-        <div class="game-frame" onclick="document.querySelector('.game-iframe').contentWindow.focus()">
-            <iframe src="game-index.html" class="game-iframe" scrolling="no"></iframe>
+        <div class="game-frame">
+            <iframe src="https://studio.code.org/projects/gamelab/AqrnK-rl6VsqTYX8ZDQDFBXaPH17HpYmnxjC9Gqcn58/embed" class="game-iframe" scrolling="no"></iframe>
         </div>
 
-        <div><p><em>Click into the game frame to start.</em></p><br></div>
-        <div><p><em>Refresh the screen to restart the game if it doesn't restart itself.</em></p></div>
-        <br>
         <div class="game-info">
             <h1>Alien Fight</h1>
             <p class="description">
@@ -205,19 +164,5 @@
             </div>
         </div>
     </div>
-    <script>
-        // Auto-focus iframe when clicked to enable game interactions
-        const iframe = document.querySelector('.game-iframe');
-        
-        iframe.addEventListener('load', function() {
-            // Focus iframe after it loads
-            iframe.contentWindow.focus();
-        });
-        
-        // Re-focus when clicking on the game frame
-        document.querySelector('.game-frame').addEventListener('click', function() {
-            iframe.contentWindow.focus();
-        });
-    </script>
 </body>
 </html>

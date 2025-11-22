@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMILE - SeeSeePortal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,7 +12,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0033A0 0%, #999ACA 100%);
             min-height: 100vh;
             color: #FFFFFF;
@@ -42,14 +39,20 @@
             padding: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             margin-bottom: 30px;
-            overflow: hidden;
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .game-iframe {
             display: block;
             border: none;
-            width: 401px;
-            height: 401px;
+            width: 450px;
+            height: 480px;
         }
 
         .game-info {
@@ -119,6 +122,7 @@
             .game-iframe {
                 width: 100%;
                 max-width: 400px;
+                height: 400px;
             }
 
             .game-frame {
@@ -145,12 +149,9 @@
     
     <div class="game-container">
         <div class="game-frame">
-            <iframe src="game-index.html" class="game-iframe" scrolling="no" allow="scripts"></iframe>
+            <iframe src="https://studio.code.org/projects/gamelab/w4Jb6DiacHeoSm3Cbb006QAKn-uuzq6cNgTMC_ESHCM/embed" class="game-iframe" scrolling="no"></iframe>
         </div>
 
-        <div><p><em>Click into the game frame to start.</em></p><br></div>
-        <div><p><em>Refresh the screen to restart the game if it doesn't restart itself.</em></p></div>
-        <br>
         <div class="game-info">
             <h1>SMILE</h1>
             <p class="description">
