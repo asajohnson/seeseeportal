@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeeSeePortal Game Uploader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 SeeSeePortal Game Uploader</h1>
+            <p class="subtitle">Submit your Code.org Game Lab creation!</p>
+        </header>
+
+        <main>
+            <div class="upload-card">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="form-section">
+                        <h2>Step 1: Upload Your Game</h2>
+                        <div class="form-group">
+                            <label for="zipfile">Game Zip File *</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="zipfile" name="zipfile" accept=".zip" required>
+                                <span class="file-name" id="fileName">No file selected</span>
+                            </div>
+                            <small>Export your game from Code.org: Share → Show advanced options → Export → Download</small>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Step 2: Select Trimester</h2>
+                        <div class="form-group">
+                            <label for="trimester">Trimester Path *</label>
+                            <select id="trimester" name="trimester" required>
+                                <option value="">Loading trimester paths...</option>
+                            </select>
+                            <small>Select which trimester this game was created in</small>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h2>Step 3: Game Information</h2>
+                        <div class="form-group">
+                            <label for="title">Game Title *</label>
+                            <input type="text" id="title" name="title" required maxlength="100" placeholder="Enter your game's title">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description *</label>
+                            <textarea id="description" name="description" required maxlength="500" rows="3" placeholder="Describe your game (what's the objective, how to play, etc.)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="author">Author Name *</label>
+                            <input type="text" id="author" name="author" required maxlength="100" placeholder="Your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="players">Number of Players</label>
+                            <input type="text" id="players" name="players" maxlength="20" placeholder="e.g., 1, 2, 1-2" value="1">
+                            <small>Optional: How many players can play?</small>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="btn-primary">
+                            <span class="btn-text">Upload Game</span>
+                            <span class="btn-loader" style="display: none;">Processing...</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="statusArea" class="status-area" style="display: none;">
+                    <div id="progressBar" class="progress-bar" style="display: none;">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div id="statusMessage" class="status-message"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Cougar Mountain Middle School • SeeSeePortal</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
