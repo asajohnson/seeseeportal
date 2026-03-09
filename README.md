@@ -25,3 +25,16 @@ Don’t worry - this site is actually educational. It’s full of logic, coding,
 
 ## Enjoy the games!
 Whether you’re here to play, browse student creations, or just enjoy a parody site that somehow survived being blocked… welcome aboard.
+
+## Publishing a game (for teachers)
+
+Games are embedded from Code.org Game Lab. Before a game will display on the portal, **sharing must be enabled** for the student’s project on Code.org, otherwise visitors will see an "not available for sharing" error instead of the game.
+
+To enable sharing for a student project:
+1. Sign in to Code.org as the teacher or have the student sign in.
+2. Open the Game Lab project.
+3. Click **Share** in the top toolbar.
+4. Make sure sharing is toggled **on**.
+
+For section-wide sharing settings (recommended before publishing), see:
+https://support.code.org/hc/en-us/articles/115001554911-Configuring-sharing-options-for-students-using-Lab-tools
