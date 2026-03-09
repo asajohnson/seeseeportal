@@ -48,8 +48,8 @@
 
         <!-- The code for the trimester toggles. -->
         <div class="trimester-toggles">
-            <button class="active" onclick="filterByTrimester('trimester1')">Trimester 1</button>
-            <button onclick="filterByTrimester('trimester2')">Trimester 2</button>
+            <button onclick="filterByTrimester('trimester1')">Trimester 1</button>
+            <button class="active" onclick="filterByTrimester('trimester2')">Trimester 2</button>
             <button onclick="filterByTrimester('trimester3')">Trimester 3</button>
         </div>
 
@@ -315,6 +315,69 @@
 
             // Trimester 2 Games (trimester: trimester2)
             // Need one array for every game.
+            {
+                title: "IM - Game",
+                trimester: "trimester2",
+                thumbnail: "🎮",
+                description: "IM - Game Description",
+                players: "1",
+                author: "IM",
+                folder: "games/2025-2026/t2/im-game"
+            },
+            {
+                title: "LS - Game",
+                trimester: "trimester2",
+                thumbnail: "🎮",
+                description: "LS - Game Description",
+                players: "1",
+                author: "LS",
+                folder: "games/2025-2026/t2/ls-game"
+            },
+            {
+                title: "IL - Game",
+                trimester: "trimester2",
+                thumbnail: "🎮",
+                description: "IL - Game Description",
+                players: "1",
+                author: "IL",
+                folder: "games/2025-2026/t2/il-game"
+            },
+            {
+                title: "JL - Game",
+                trimester: "trimester2",
+                thumbnail: "🎮",
+                description: "JL - Game Description",
+                players: "1",
+                author: "JL",
+                folder: "games/2025-2026/t2/jl-game"
+            },
+            {
+                title: "OP - Game",
+                trimester: "trimester2",
+                thumbnail: "🎮",
+                description: "OP - Game Description",
+                players: "1",
+                author: "OP",
+                folder: "games/2025-2026/t2/op-game"
+            },
+            {
+                title: "HA - Game",
+                trimester: "trimester2",
+                thumbnail: "🎮",
+                description: "HA - Game Description",
+                players: "1",
+                author: "HA",
+                folder: "games/2025-2026/t2/ha-game"
+            },
+            {
+                title: "TS - Game",
+                trimester: "trimester2",
+                thumbnail: "🎮",
+                description: "TS - Game Description",
+                players: "1",
+                author: "TS",
+                folder: "games/2025-2026/t2/ts-game"
+            },
 
             // Trimester 3 Games (trimester: trimester3)
             // Need one array for every game.
@@ -323,7 +386,7 @@
         ];
 
         //This sets the default active trimester button.
-        let currentTrimester = 'trimester1';
+        let currentTrimester = 'trimester2';
 
         //This sets the default active trimester button.
         function renderGames(gamesToRender) {
