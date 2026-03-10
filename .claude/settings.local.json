@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//usr/**)",
+      "Read(//c/Windows/System32//**)"
+    ]
+  }
+}
