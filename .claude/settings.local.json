@@ -6,7 +6,15 @@
       "Bash(for dir:*)",
       "Bash(do echo:*)",
       "Read(//c/Development/seeseeportal/**)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\" \"https://studio.code.org/projects/gamelab/e219c11b-0493-4efd-91b1-894079e72a36/export_zip\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\" \"https://studio.code.org/projects/gamelab/e219c11b-0493-4efd-91b1-894079e72a36/download\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\" \"https://studio.code.org/v3/sources/gamelab/e219c11b-0493-4efd-91b1-894079e72a36/export_zip\")",
+      "Bash(curl -s -I \"https://studio.code.org/projects/gamelab/e219c11b-0493-4efd-91b1-894079e72a36\")",
+      "Bash(curl -s \"https://studio.code.org/projects/gamelab/e219c11b-0493-4efd-91b1-894079e72a36\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://studio.code.org/v3/sources/gamelab/e219c11b-0493-4efd-91b1-894079e72a36/export_zip\")",
+      "Bash(curl -s \"https://studio.code.org/v3/channels/e219c11b-0493-4efd-91b1-894079e72a36\")",
+      "Bash(curl -s -o /tmp/test-thumb.png -w \"%{http_code} %{content_type}\" \"https://studio.code.org/v3/files/e219c11b-0493-4efd-91b1-894079e72a36/.metadata/thumbnail.png\")"
     ]
   }
 }
