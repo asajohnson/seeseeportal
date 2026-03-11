@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Read(//usr/**)",
-      "Read(//c/Windows/System32//**)"
+      "Read(//c/Windows/System32//**)",
+      "Bash(for dir:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Development/seeseeportal/**)",
+      "Bash(done)"
     ]
   }
 }
