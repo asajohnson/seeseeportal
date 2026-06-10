@@ -16,7 +16,17 @@
       "Bash(curl -s \"https://studio.code.org/v3/channels/e219c11b-0493-4efd-91b1-894079e72a36\")",
       "Bash(curl -s -o /tmp/test-thumb.png -w \"%{http_code} %{content_type}\" \"https://studio.code.org/v3/files/e219c11b-0493-4efd-91b1-894079e72a36/.metadata/thumbnail.png\")",
       "Bash(/c/Users/JohnsonA5/AppData/Local/Programs/Python/Python312/python -c \":*)",
-      "Bash(curl -s -o /tmp/anim_test.png -w \"%{http_code} %{content_type}\" \"https://studio.code.org/v3/animations/e219c11b-0493-4efd-91b1-894079e72a36/0b39d8be-462e-438b-9902-bef7ac438019.png\")"
+      "Bash(curl -s -o /tmp/anim_test.png -w \"%{http_code} %{content_type}\" \"https://studio.code.org/v3/animations/e219c11b-0493-4efd-91b1-894079e72a36/0b39d8be-462e-438b-9902-bef7ac438019.png\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh run *)",
+      "Bash(gh api *)",
+      "PowerShell(\\(Get-Command gh -ErrorAction SilentlyContinue\\).Source)",
+      "Bash(bash gen_games.sh)",
+      "Bash(:)",
+      "Bash(sed -n '157,159p' games/2025-2026/t3/flappy-ape/index.html)",
+      "Bash(sed -n '157,159p' games/2025-2026/t3/test-your-luck-with-drew/index.html)"
     ]
   }
 }
