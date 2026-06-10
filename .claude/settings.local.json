@@ -26,7 +26,9 @@
       "Bash(bash gen_games.sh)",
       "Bash(:)",
       "Bash(sed -n '157,159p' games/2025-2026/t3/flappy-ape/index.html)",
-      "Bash(sed -n '157,159p' games/2025-2026/t3/test-your-luck-with-drew/index.html)"
+      "Bash(sed -n '157,159p' games/2025-2026/t3/test-your-luck-with-drew/index.html)",
+      "Bash(awk '/Trimester 3 Games/,/\\\\];/' index.html)",
+      "Bash(bash gen_games2.sh)"
     ]
   }
 }
