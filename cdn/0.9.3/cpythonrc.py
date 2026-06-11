@@ -1099,6 +1099,14 @@ if not aio.cross.simulator:
                 PyConfig.pkg_indexes.append(redirect)
 
             print("807: DEV MODE ON", PyConfig.pkg_indexes)
+        else:
+            # SELF-HOST PATCH (seeseeportal): fetch the package index + pygame
+            # wheel from THIS site's own /cdn/ instead of the (school-blocked)
+            # pygame-web.github.io. PYGPI is read by aio.pep0723.async_repos(),
+            # which also rewrites every wheel "-CDN-" to this value.
+            import os as _os
+            _os.environ["PYGPI"] = platform.window.location.origin + "/cdn/"
+            print("807: SELF-HOST PYGPI", _os.environ["PYGPI"])
         # now in pep0723
         #        else:
         #            # address cdn
